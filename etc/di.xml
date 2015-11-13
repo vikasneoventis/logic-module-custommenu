@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+	<preference for="Logic\CustomMenu\Api\Data\MenuInterface" type="Logic\CustomMenu\Model\Menu" />
+	<preference for="Logic\CustomMenu\Api\Data\MenuHelperInterface" type="Logic\CustomMenu\Helper\MenuHelper" />
+	<preference for="Logic\CustomMenu\Api\Data\DebugHelperInterface" type="Logic\CustomMenu\Helper\DebugHelper" />
+	<virtualType name="LogicMenuGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+	<virtualType name="LogicMenuProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+	    <arguments>
+	        <argument name="collection" xsi:type="object" shared="false">Logic\CustomMenu\Model\Resource\Menu\Collection</argument>
+	        <!-- <argument name="filterPool" xsi:type="object" shared="false">CmsGirdFilterPool</argument> -->
+	    </arguments>
+	</virtualType>
+	<virtualType name="LogicMenuSettingsProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+	    <arguments>
+	        <argument name="collection" xsi:type="object" shared="false">Logic\CustomMenu\Model\Resource\Settings\Collection</argument>
+	        <!-- <argument name="filterPool" xsi:type="object" shared="false">CmsGirdFilterPool</argument> -->
+	    </arguments>
+	</virtualType>
+</config>

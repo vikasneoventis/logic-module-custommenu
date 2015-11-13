@@ -1,0 +1,107 @@
+<?php 
+    /** @var $block \Logic\CustomMenu\Block\Menu **/
+    $menu_array = $block->getBlockMenuIdArray();
+    $menu_id_array = $menu_array['block_id'];
+    $menu_title_array= $menu_array['title'];
+    $menu_count = count($menu_title_array);
+    $color_settings = $block->getColorSettings();
+?>
+<?php 
+    $_menu = $block->getHtml('','has-sub',0);
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Logic_CustomMenu::css/logic-menu-styles.css')?>">
+<div class = 'menu-wrapper'>
+<div id='cssmenu'>
+    <ul>
+        <li><a href="<?php echo $block->getUrl('');?>">Home</a></li>
+        <?php foreach ($menu_id_array as $key=>$menu_id):?>
+        <li class='logic-default-menu'>
+            <a href="#"><span><?php echo $menu_title_array[$key] ?></span></a>
+            <ul>
+                <li id="logic-menu-<?php echo $key?>" class="logic-menu-block" style ='color:#ffffff;'><?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($menu_id)->toHtml();?> </li> 
+            </ul> 
+        </li>
+        <li id='logic-collapsed-content-<?php echo $key?>' class = "logic-collapsed-menu has-sub">
+            <a  href="#"><span><?php echo $menu_title_array[$key] ?></span></a>
+        </li>
+        <?php endforeach;?>
+        
+        <?php echo $_menu;?>
+    </ul>    
+</div>
+</div>
+
+<script type="text/javascript">
+require(
+[
+    "jquery",
+    "Logic/logic-menu-script"
+],
+function ($) {
+
+    $(document).ready(function() {
+
+        // css editing
+        $("#cssmenu > ul > li > a").css("color","#ffffff");
+        $("#cssmenu").css("background-color","#333").css("max-width","1210px");
+        //
+        $("#cssmenu").menumaker({
+            title: "Menu",
+            format: "multitoggle",
+            menu_count: <?php echo $menu_count?>
+        });
+
+        var menu_count = <?php echo $menu_count?>;
+        for ( var i = 0; i < menu_count; i++ ) {
+            var parent_id = '#logic-menu-' + i;
+            var prepend_id = '#logic-collapsed-content-' + i;
+            var clone_html = $(parent_id).find('ul.logic-menu-list').clone();
+            // $(prepend_id).addClass('logic-collapsed-menu');
+            $(prepend_id).append(clone_html);
+        }
+
+        $("#cssmenu").prepend("<div id='menu-line'></div>");
+
+        var foundActive = false, 
+            activeElement, 
+            linePosition = 0, 
+            menuLine = $("#cssmenu #menu-line"), 
+            lineWidth, 
+            defaultPosition, 
+            defaultWidth;
+
+        $("#cssmenu > ul > li").each(function() {
+            if ($(this).hasClass('active')) {
+                activeElement = $(this);
+                foundActive = true;
+            }
+        });
+
+        if (foundActive === false) {
+            activeElement = $("#cssmenu > ul > li").first();
+        }
+
+        defaultWidth = lineWidth = activeElement.width();
+
+        defaultPosition = linePosition = activeElement.position().left;
+
+        menuLine.css("width", lineWidth);
+        menuLine.css("left", linePosition);
+
+        $("#cssmenu > ul > li").hover(
+            function() {
+                activeElement = $(this);
+                lineWidth = activeElement.width();
+                linePosition = activeElement.position().left;
+                menuLine.css("width", lineWidth);
+                menuLine.css("left", linePosition);
+            }, 
+            function() {
+                menuLine.css("left", defaultPosition);
+                menuLine.css("width", defaultWidth);
+            }
+        );
+    });
+
+});
+</script>

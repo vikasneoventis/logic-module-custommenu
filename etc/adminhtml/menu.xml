@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+    	<!-- <add id="Logic_CustomMenu::menu" title="Logic" module="Logic_CustomMenu" sortOrder="11" resource="Logic_CustomMenu::menu" action="logicmenuadmin/menu"/> -->
+    	<add id="Logic_CustomMenu::menu" title="Logic" module="Logic_CustomMenu" sortOrder="11" resource="Logic_CustomMenu::menu"/>
+
+    	<add id="Logic_CustomMenu::menu_title" title="Menu" module="Logic_CustomMenu" sortOrder="10" parent="Logic_CustomMenu::menu" resource="Logic_CustomMenu::menu_title"/>
+
+    	<add id="Logic_CustomMenu::menu_block" title="Menu Blocks" module="Logic_CustomMenu" sortOrder="10" parent="Logic_CustomMenu::menu_title" action="logicmenuadmin/menu" resource="Logic_CustomMenu::menu_block"/>
+
+        <add id="Logic_CustomMenu::menu_settings" title="Menu Settings" module="Logic_CustomMenu" sortOrder="10" parent="Logic_CustomMenu::menu_title" action="logicmenuadmin/settings" resource="Logic_CustomMenu::menu_settings"/>
+    </menu>
+</config>
