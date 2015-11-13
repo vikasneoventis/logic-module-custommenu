@@ -12,6 +12,7 @@ class InstallSchema implements InstallSchemaInterface
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         
+        $installer = $setup;
         $installer->startSetup();
         //
         $tableName = $installer->getTable('logic_menu_blocks');
