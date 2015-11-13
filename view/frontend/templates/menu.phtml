@@ -4,7 +4,12 @@
     $menu_id_array = $menu_array['block_id'];
     $menu_title_array= $menu_array['title'];
     $menu_count = count($menu_title_array);
+    //
     $color_settings = $block->getColorSettings();
+    $backGroundColor = $color_settings['backGroundColor'];
+    $backGroundColorHov = $color_settings['backGroundColorHov'];
+    $textColor = $color_settings['textColor'];
+    $textColorHov = $color_settings['textColorHov'];
 ?>
 <?php 
     $_menu = $block->getHtml('','has-sub',0);
@@ -18,7 +23,7 @@
         <li class='logic-default-menu'>
             <a href="#"><span><?php echo $menu_title_array[$key] ?></span></a>
             <ul>
-                <li id="logic-menu-<?php echo $key?>" class="logic-menu-block" style ='color:#ffffff;'><?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($menu_id)->toHtml();?> </li> 
+                <li id="logic-menu-<?php echo $key?>" class="logic-menu-block"><?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($menu_id)->toHtml();?> </li> 
             </ul> 
         </li>
         <li id='logic-collapsed-content-<?php echo $key?>' class = "logic-collapsed-menu has-sub">
@@ -42,8 +47,8 @@ function ($) {
     $(document).ready(function() {
 
         // css editing
-        $("#cssmenu > ul > li > a").css("color","#ffffff");
-        $("#cssmenu").css("background-color","#333").css("max-width","1210px");
+        $("#cssmenu > ul > li > a").css("color","<?php echo $textColor?>");
+        $("#cssmenu").css("background-color","<?php echo $backGroundColor?>").css("max-width","1210px");
         //
         $("#cssmenu").menumaker({
             title: "Menu",

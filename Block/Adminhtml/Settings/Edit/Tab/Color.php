@@ -5,6 +5,7 @@ use Magento\Backend\Block\Widget\Form\Generic;
 use Magento\Backend\Block\Widget\Tab\TabInterface;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Registry;
+use Logic\CustomMenu\Model\System\Config\Status;
 use Magento\Framework\Data\FormFactory;
  
 class Color extends Generic implements TabInterface
@@ -27,8 +28,10 @@ class Color extends Generic implements TabInterface
         Context $context,
         Registry $registry,
         FormFactory $formFactory,
+        Status $menuStatus,
         array $data = []
     ) {
+        $this->_menuStatus = $menuStatus;
         parent::__construct($context, $registry, $formFactory, $data);
     }
  
@@ -84,7 +87,15 @@ class Color extends Generic implements TabInterface
                 'label'    => __('Text Color(Hover)'),
             ]
         );
-
+        $fieldset->addField(
+            'is_active',
+            'select',
+            [
+                'name'      => 'is_active',
+                'label'     => __('Status'),
+                'options'   => $this->_menuStatus->toOptionArray()
+            ]
+        );
         $data = $model->getData();
         $form->setValues($data);
         $this->setForm($form);

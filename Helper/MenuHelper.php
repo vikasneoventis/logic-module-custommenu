@@ -1,8 +1,10 @@
 <?php namespace Logic\CustomMenu\Helper;
 
 use Logic\CustomMenu\Api\Data\MenuInterface;
+use Logic\CustomMenu\Api\Data\MenuStyleInterface;
 use Logic\CustomMenu\Api\Data\MenuHelperInterface;
 use Logic\CustomMenu\Model\Resource\Menu\CollectionFactory as menuCollectionFactory;
+use Logic\CustomMenu\Model\Resource\Settings\CollectionFactory as settingsCollectionFactory;
 use Magento\Cms\Model\Resource\Block\CollectionFactory as blockCollectionFactory;
 use Magento\Framework\App\Helper\AbstractHelper;
 
@@ -10,16 +12,19 @@ class MenuHelper extends AbstractHelper implements MenuHelperInterface
 {
     protected $_blockCollectionFactory;
     protected $_menuCollectionFactory;
+    protected $_settingsCollectionFactory;
     protected $_matchedIDs;
 
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
         menuCollectionFactory $menuCollectionFactory,
+        settingsCollectionFactory $settingsCollectionFactory,
         blockCollectionFactory $blockCollectionFactory
     )
     { 
         $this->_menuCollectionFactory = $menuCollectionFactory;
         $this->_blockCollectionFactory = $blockCollectionFactory;
+        $this->_settingsCollectionFactory = $settingsCollectionFactory;
         parent::__construct($context);
     }
 
@@ -95,9 +100,6 @@ class MenuHelper extends AbstractHelper implements MenuHelperInterface
         }
         return false;
     }
-    public function getColorSettings(){
-         
-    }
     /*Menu Data Filter*/
     private function MenuDataFilter($model,$fieldname){
         switch ($fieldname) {
@@ -118,20 +120,46 @@ class MenuHelper extends AbstractHelper implements MenuHelperInterface
             case MenuInterface::IS_ACTIVE:
                 return $model->isActive();
             default:
-                $this->_debug('return false','getMenuData');
                 return false;
         }
     }
-    /* Debug */
-    private function _debug($debug_message = 'debug message',$id = '0'){
-
-        file_put_contents('php://stderr', print_r(PHP_EOL.'--id:'.$id.'--'.date("Y-m-d H:i:s").PHP_EOL, TRUE));
-        if(is_array($debug_message)){
-            file_put_contents('php://stderr', print_r($debug_message, TRUE));
-            file_put_contents('php://stderr', print_r(PHP_EOL, TRUE));
-        }else{
-            file_put_contents('php://stderr', print_r($debug_message.PHP_EOL, TRUE));
+    public function getColorSettings(){
+        $settings=array();
+        $settomgsCollection = $this->_settingsCollectionFactory->create();
+        $backGroundColor = '#ffffff';
+        $backGroundColorHov = '#ffffff';
+        $textColor = '#333';
+        $textColorHov = '#333';
+        foreach ($settomgsCollection as $key=>$settingsModel) {
+            if( $settingsModel->isActive()){
+                $backGroundColor = $this->MenuStyleDataFilter($settingsModel,MenuStyleInterface::CLR_BACK)?:$backGroundColor;
+                $backGroundColorHov = $this->MenuStyleDataFilter($settingsModel,MenuStyleInterface::CLR_BACK_HOV)?:$backGroundColorHov;
+                $textColor = $this->MenuStyleDataFilter($settingsModel,MenuStyleInterface::CLR_TXT)?:$textColor;
+                $textColorHov = $this->MenuStyleDataFilter($settingsModel,MenuStyleInterface::CLR_TXT_HOV)?:$textColorHov;
+                break;
+            }
+        }
+        $settings=array(
+                    'backGroundColor' => $backGroundColor,
+                    'backGroundColorHov' => $backGroundColorHov,
+                    'textColor' => $textColor,
+                    'textColorHov' => $textColorHov
+                );
+        return $settings;
+    }
+    /*Menu Style Data Filter*/
+    private function MenuStyleDataFilter($model,$fieldname){
+        switch ($fieldname) {
+            case MenuStyleInterface::CLR_BACK:
+                return $model->getBackGroundColor();
+            case MenuStyleInterface::CLR_BACK_HOV:
+                return $model->getBackGroundColorHover();
+            case MenuStyleInterface::CLR_TXT:
+                return $model->getTextColor();
+            case MenuStyleInterface::CLR_TXT_HOV:
+                return $model->getTextColorHover();
+            default:
+                return false;
         }
     }
-
 }

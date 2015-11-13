@@ -15,7 +15,7 @@ class Form extends Generic
         $form = $this->_formFactory->create(
             [
                 'data' => [
-                    'id'    => 'settings_form',
+                    'id'    => 'edit_form',
                     'action' => $this->getData('action'),
                     'method' => 'post'
                 ]

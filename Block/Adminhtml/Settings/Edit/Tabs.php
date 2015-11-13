@@ -15,7 +15,7 @@ class Tabs extends WidgetTabs
     {
         parent::_construct();
         $this->setId('settings_edit_tabs');
-        $this->setDestElementId('settings_form');
+        $this->setDestElementId('edit_form');
         $this->setTitle(__('Menu Settings'));
     }
  

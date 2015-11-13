@@ -11,5 +11,16 @@ class DebugHelper extends AbstractHelper implements DebugHelperInterface
     { 
         parent::__construct($context);
     }
+    
+    function _logMsg($tag='empty',$msg='empty',$active=1){
+        if(!$active) return;
+        $startLine = '----- Log Msg : '.$tag.' -----';
+        $endLine = '--';
+        $time = '----- '.date("Y-m-d H:i:s").' -----';
+        file_put_contents('php://stderr', print_r(PHP_EOL.$startLine.PHP_EOL, TRUE));
+        file_put_contents('php://stderr', print_r($time.PHP_EOL, TRUE));
+        file_put_contents('php://stderr', print_r($msg, TRUE));
+        file_put_contents('php://stderr', print_r(PHP_EOL.$endLine.PHP_EOL, TRUE)); 
+    }
 
 }

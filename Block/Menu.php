@@ -47,7 +47,7 @@ class Menu extends Template implements IdentityInterface
         );
 	}
     public function getColorSettings(){
-        
+        return $this->_menuHelper->getColorSettings();
     }
     public function getMenuId(){
         $this->_menuHelper->execute();

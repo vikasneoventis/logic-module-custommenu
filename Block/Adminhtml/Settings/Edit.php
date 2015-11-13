@@ -52,13 +52,14 @@ class Edit extends Container
                     'mage-init' => [
                         'button' => [
                             'event' => 'saveAndContinueEdit',
-                            'target' => '#settings_form'
+                            'target' => '#edit_form'
                         ]
                     ]
                 ]
             ],
             -100
         );
+        $this->buttonList->update('delete', 'label', __('Delete'));
         
     }
     
