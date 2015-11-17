@@ -5,7 +5,7 @@
  */
 namespace Logic\CustomMenu\Model\System\Config;
 
-use Magento\Cms\Model\Resource\Block\CollectionFactory;
+use Magento\Cms\Model\ResourceModel\Block\CollectionFactory;
 use Magento\Framework\Option\ArrayInterface;
  
 /**

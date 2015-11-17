@@ -14,7 +14,7 @@ class Settings extends AbstractModel implements MenuStyleInterface, IdentityInte
      */
     protected function _construct(){
 
-        $this->_init('Logic\CustomMenu\Model\Resource\Settings');
+        $this->_init('Logic\CustomMenu\Model\ResourceModel\Settings');
     }
 
     public function getIdentities(){

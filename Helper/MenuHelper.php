@@ -3,9 +3,9 @@
 use Logic\CustomMenu\Api\Data\MenuInterface;
 use Logic\CustomMenu\Api\Data\MenuStyleInterface;
 use Logic\CustomMenu\Api\Data\MenuHelperInterface;
-use Logic\CustomMenu\Model\Resource\Menu\CollectionFactory as menuCollectionFactory;
-use Logic\CustomMenu\Model\Resource\Settings\CollectionFactory as settingsCollectionFactory;
-use Magento\Cms\Model\Resource\Block\CollectionFactory as blockCollectionFactory;
+use Logic\CustomMenu\Model\ResourceModel\Menu\CollectionFactory as menuCollectionFactory;
+use Logic\CustomMenu\Model\ResourceModel\Settings\CollectionFactory as settingsCollectionFactory;
+use Magento\Cms\Model\ResourceModel\Block\CollectionFactory as blockCollectionFactory;
 use Magento\Framework\App\Helper\AbstractHelper;
 
 class MenuHelper extends AbstractHelper implements MenuHelperInterface

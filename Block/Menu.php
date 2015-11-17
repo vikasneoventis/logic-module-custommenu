@@ -7,8 +7,8 @@ use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\Data\TreeFactory;
 use Magento\Framework\Data\Tree\Node;
 use Magento\Framework\Data\Tree\NodeFactory;
-use Magento\Cms\Model\Resource\Block\CollectionFactory as blockCollectionFactory;
-use Logic\CustomMenu\Model\Resource\Menu\CollectionFactory as menuCollectionFactory;
+use Magento\Cms\Model\ResourceModel\Block\CollectionFactory as blockCollectionFactory;
+use Logic\CustomMenu\Model\ResourceModel\Menu\CollectionFactory as menuCollectionFactory;
 use Logic\CustomMenu\Api\Data\MenuInterface;
 use Logic\CustomMenu\Api\Data\MenuHelperInterface;
 

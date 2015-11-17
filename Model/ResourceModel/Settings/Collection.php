@@ -1,6 +1,6 @@
 <?php
  
-namespace Logic\CustomMenu\Model\Resource\Settings;
+namespace Logic\CustomMenu\Model\ResourceModel\Settings;
  
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
  
@@ -13,7 +13,7 @@ class Collection extends AbstractCollection
     {
         $this->_init(
             'Logic\CustomMenu\Model\Settings',
-            'Logic\CustomMenu\Model\Resource\Settings'
+            'Logic\CustomMenu\Model\ResourceModel\Settings'
         );
     }
 }

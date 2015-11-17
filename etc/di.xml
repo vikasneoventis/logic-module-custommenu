@@ -19,13 +19,13 @@
     </virtualType>
 	<virtualType name="LogicMenuProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
 	    <arguments>
-	        <argument name="collection" xsi:type="object" shared="false">Logic\CustomMenu\Model\Resource\Menu\Collection</argument>
+	        <argument name="collection" xsi:type="object" shared="false">Logic\CustomMenu\Model\ResourceModel\Menu\Collection</argument>
 	        <!-- <argument name="filterPool" xsi:type="object" shared="false">CmsGirdFilterPool</argument> -->
 	    </arguments>
 	</virtualType>
 	<virtualType name="LogicMenuSettingsProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
 	    <arguments>
-	        <argument name="collection" xsi:type="object" shared="false">Logic\CustomMenu\Model\Resource\Settings\Collection</argument>
+	        <argument name="collection" xsi:type="object" shared="false">Logic\CustomMenu\Model\ResourceModel\Settings\Collection</argument>
 	        <!-- <argument name="filterPool" xsi:type="object" shared="false">CmsGirdFilterPool</argument> -->
 	    </arguments>
 	</virtualType>

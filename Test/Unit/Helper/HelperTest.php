@@ -33,14 +33,14 @@ class HelperTest extends \PHPUnit_Framework_TestCase
 
         $menuDataFactoryMock = $this->getMockBuilder('logic\CustomMenu\Api\Data\MenuInterfaceFactory')->disableOriginalConstructor()->setMethods(['create'])->getMock();
 
-        $menuCollectionFactoryMock = $this->getMockBuilder('logic\CustomMenu\Model\Resource\Menu\CollectionFactory')->disableOriginalConstructor()->setMethods(['create'])->getMock();
+        $menuCollectionFactoryMock = $this->getMockBuilder('logic\CustomMenu\Model\ResourceModel\Menu\CollectionFactory')->disableOriginalConstructor()->setMethods(['create'])->getMock();
 
         $this->menuMock = $this->getMockBuilder('logic\CustomMenu\Model\Menu')->disableOriginalConstructor()->getMock();
 
         $this->menuDataMock = $this->getMockBuilder('logic\CustomMenu\Api\Data\MenuInterface')
             ->getMock();
 
-        $this->menuCollectionMock = $this->getMockBuilder('logic\CustomMenu\Model\Resource\Menu\Collection')
+        $this->menuCollectionMock = $this->getMockBuilder('logic\CustomMenu\Model\ResourceModel\Menu\Collection')
             ->disableOriginalConstructor()
             ->setMethods(['addFieldToFilter', 'getSize', 'setCurPage', 'setPageSize', 'load', 'addOrder'])
             ->getMock();
@@ -65,14 +65,14 @@ class HelperTest extends \PHPUnit_Framework_TestCase
 
         $blockDataFactoryMock = $this->getMockBuilder('Magento\Cms\Api\Data\BlockInterfaceFactory')->disableOriginalConstructor()->setMethods(['create'])->getMock();
 
-        $blockCollectionFactoryMock = $this->getMockBuilder('Magento\Cms\Model\Resource\Block\CollectionFactory')->disableOriginalConstructor()->setMethods(['create'])->getMock();
+        $blockCollectionFactoryMock = $this->getMockBuilder('Magento\Cms\Model\ResourceModel\Block\CollectionFactory')->disableOriginalConstructor()->setMethods(['create'])->getMock();
 
         $this->blockMock = $this->getMockBuilder('Magento\Cms\Model\Block')->disableOriginalConstructor()->getMock();
 
         $this->blockDataMock = $this->getMockBuilder('Magento\Cms\Api\Data\BlockInterface')
             ->getMock();
 
-        $this->blockCollectionMock = $this->getMockBuilder('Magento\Cms\Model\Resource\Block\Collection')
+        $this->blockCollectionMock = $this->getMockBuilder('Magento\Cms\Model\ResourceModel\Block\Collection')
             ->disableOriginalConstructor()
             ->setMethods(['addFieldToFilter', 'getSize', 'setCurPage', 'setPageSize', 'load', 'addOrder'])
             ->getMock();

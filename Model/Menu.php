@@ -14,7 +14,7 @@ class Menu extends AbstractModel implements MenuInterface, IdentityInterface
      */
     protected function _construct(){
 
-        $this->_init('Logic\CustomMenu\Model\Resource\Menu');
+        $this->_init('Logic\CustomMenu\Model\ResourceModel\Menu');
     }
 
     public function getIdentities(){

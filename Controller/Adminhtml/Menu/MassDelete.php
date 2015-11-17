@@ -23,7 +23,7 @@ class MassDelete extends AbstractMassDelete
      *
      * @var string
      */
-    protected $collection = 'Logic\CustomMenu\Model\Resource\Menu\Collection';
+    protected $collection = 'Logic\CustomMenu\Model\ResourceModel\Menu\Collection';
 
     /**
      * Block model
