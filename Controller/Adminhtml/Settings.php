@@ -6,7 +6,7 @@ use Magento\Framework\View\Result\PageFactory;
 use Logic\CustomMenu\Model\SettingsFactory;
 use Magento\Framework\Registry;
 
-class Settings extends \Magento\Backend\App\Action
+abstract class Settings extends \Magento\Backend\App\Action
 {
     /**
      * @var PageFactory

@@ -11,7 +11,7 @@ use Magento\Framework\Controller\ResultFactory;
 /**
  * Class AbstractMassDelete
  */
-class AbstractMassDelete extends \Magento\Backend\App\Action
+abstract class AbstractMassDelete extends \Magento\Backend\App\Action
 {
     /**
      * Field id
