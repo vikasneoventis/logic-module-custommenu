@@ -6,7 +6,7 @@ class DebugHelper extends AbstractHelper implements DebugHelperInterface
 {
 
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
+        \Magento\Framework\App\Helper\Context $context
     )
     { 
         parent::__construct($context);
