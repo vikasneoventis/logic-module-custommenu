@@ -1,6 +1,7 @@
 <?php namespace Logic\CustomMenu\Helper;
 
 use Logic\CustomMenu\Api\Data\DebugHelperInterface;
+use Magento\Framework\App\Helper\AbstractHelper;
 
 class DebugHelper extends AbstractHelper implements DebugHelperInterface
 {
