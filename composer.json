@@ -1,5 +1,5 @@
 {
-    "name": "logic/logic-module-custommenu",
+    "name": "logic/module-custom-menu",
     "description": "A simple Menu module.",
     "type": "magento2-module",
     "license": [
@@ -10,12 +10,12 @@
         "php": "~5.5.0|~5.6.0",
         "magento/magento-composer-installer": "*"
     },
-    "extra": {
-        "map": [
-            [
-                "*",
-                "Logic/CustomMenu"
-            ]
-        ]
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Logic\\CustomMenu\\": ""
+        }
     }
 }
