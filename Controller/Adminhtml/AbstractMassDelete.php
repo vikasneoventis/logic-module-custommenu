@@ -5,8 +5,8 @@
  */
 namespace Logic\CustomMenu\Controller\Adminhtml;
 
-use Magento\Framework\Model\Resource\Db\Collection\AbstractCollection;
-use Magento\Framework\Controller\ResultFactory;
+use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use \Magento\Framework\Controller\ResultFactory;
 
 /**
  * Class AbstractMassDelete
@@ -28,7 +28,7 @@ abstract class AbstractMassDelete extends \Magento\Backend\App\Action
      *
      * @var string
      */
-    protected $collection = 'Magento\Framework\Model\Resource\Db\Collection\AbstractCollection';
+    protected $collection = '\Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection';
 
     /**
      * Model
