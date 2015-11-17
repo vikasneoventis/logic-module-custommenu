@@ -2,8 +2,8 @@
  
 namespace Logic\CustomMenu\Model\Resource;
  
-use Magento\Framework\Model\Resource\Db\AbstractDb;
- 
+use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+
 class Settings extends AbstractDb
 {
     protected $_date;
