@@ -50,10 +50,10 @@ class EditSettingsActions extends Column
     /**
      * Prepare Data Source
      *
-     * @param array $dataSource
+     * @param array $dataSource prepareDataSource
      * @return void
      */
-    public function prepareDataSource(array & $dataSource)
+    public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
