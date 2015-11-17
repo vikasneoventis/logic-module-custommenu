@@ -1,7 +1,7 @@
 <?php
 namespace Logic\CustomMenu\Block;
 
-use Magento\Framework\Object\IdentityInterface;
+use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\Data\TreeFactory;
@@ -98,7 +98,7 @@ class Menu extends Template implements IdentityInterface
 
         $html = $this->_getHtml($this->_menu, $childrenWrapClass, $limit);
 
-        $transportObject = new \Magento\Framework\Object(['html' => $html]);
+        $transportObject = new \Magento\Framework\DataObject(['html' => $html]);
         $this->_eventManager->dispatch(
             'page_block_html_topmenu_gethtml_after',
             ['menu' => $this->_menu, 'transportObject' => $transportObject]

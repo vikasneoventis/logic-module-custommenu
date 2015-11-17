@@ -4,7 +4,7 @@ namespace Logic\CustomMenu\Model;
  
 use Magento\Framework\Model\AbstractModel;
 use Logic\CustomMenu\Api\Data\MenuStyleInterface;
-use Magento\Framework\Object\IdentityInterface;
+use Magento\Framework\DataObject\IdentityInterface;
  
 class Settings extends AbstractModel implements MenuStyleInterface, IdentityInterface
 {
